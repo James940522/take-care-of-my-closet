@@ -1,7 +1,7 @@
 const { user } = require("../../models");
 
 module.exports = async (req, res) => {
-  console.log("qwerqwerqwerewr", req.body);
+  // console.log("qwerqwerqwerewr", req.body);
   const { login_id, password, nickname, user_image } = req.body;
 
   const basicimage =
