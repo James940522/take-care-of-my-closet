@@ -87,7 +87,6 @@ function MyPage({ isLogin, userInfo, setUserInfo }) {
         }
       )
       .then((res) => {
-        console.log(res.status);
         if (res.status === 200) {
           // 닉네임 중복 아님
           setNickNameClassNameOn("hide");
