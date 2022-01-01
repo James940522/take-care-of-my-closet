@@ -59,7 +59,7 @@ function App() {
         setIsloading(false);
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
     getUserInfo();
   }, []);
@@ -82,27 +82,27 @@ function App() {
         // headers: {
         //   accessToken: accessToken,
         // },
-        withCredentials: true
+        withCredentials: true,
       })
       .then((res) => {
         // console.log("유저 정보 요청 응답", res.data.data);
         // else {
-          setUserInfo({
-            id: res.data.data.userInfo.id,
-            login_id: res.data.data.userInfo.login_id,
-            image: res.data.data.userInfo.user_image,
-            nickname: res.data.data.userInfo.nickname,
-          });
-          setIsLogin(true);
+        setUserInfo({
+          id: res.data.data.userInfo.id,
+          login_id: res.data.data.userInfo.login_id,
+          image: res.data.data.userInfo.user_image,
+          nickname: res.data.data.userInfo.nickname,
+        });
+        setIsLogin(true);
         // }
       })
       .catch((err) => {
         console.log(err);
         // if (res.data.message === "unauthorized") {
-          setIsLogin(false);
-          // const refreshToken = cookies.get("refreshToken");
-          refreshTokenRequest();
-        // } 
+        setIsLogin(false);
+        // const refreshToken = cookies.get("refreshToken");
+        refreshTokenRequest();
+        // }
       });
   };
 
@@ -112,7 +112,7 @@ function App() {
         // headers: {
         //   refreshToken: refreshToken,
         // },
-        withCredentials: true
+        withCredentials: true,
       })
       .then((res) => {
         // console.log(
@@ -141,7 +141,7 @@ function App() {
         // headers: {
         //   refreshToken: cookies.get("refreshToken"),
         // },
-        withCredentials: true
+        withCredentials: true,
       })
       .then((res) => {
         // console.log("로그아웃 요청 응답", res);
@@ -242,7 +242,11 @@ function App() {
             />
           </Route>
           <Route path="/mypage">
-            <MyPage isLogin={isLogin} userInfo={userInfo} setUserInfo={setUserInfo}/>
+            <MyPage
+              isLogin={isLogin}
+              userInfo={userInfo}
+              setUserInfo={setUserInfo}
+            />
           </Route>
           <Route path="/content">
             <Content

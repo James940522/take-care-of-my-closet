@@ -146,17 +146,18 @@ function SignUp() {
         { withCredentials: true }
       )
       .then((res) => {
-        console.log(res);
-        if (res.data.message === "It's already created") {
-          setDuplicatedNick(false);
-          setDuplicatedNickMessage("사용할 수 없는 닉네임 입니다.");
-        } else if (res.data.message === "ok") {
+        if (res.data.message === "ok") {
           setDuplicatedNick(true);
           setDuplicatedNickMessage("사용 가능한 닉네임 입니다.");
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response) {
+          if (err.response.status === 409) {
+            setDuplicatedNick(false);
+            setDuplicatedNickMessage("사용할 수 없는 닉네임 입니다.");
+          }
+        }
       });
   };
 
